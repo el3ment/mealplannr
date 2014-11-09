@@ -1,0 +1,6 @@
+[submodule "vendor/bootstrap-sass"]
+	path = vendor/bootstrap-sass
+	url = https://github.com/twbs/bootstrap-sass
+[submodule "vendor/mustache.js"]
+	path = vendor/mustache.js
+	url = https://github.com/janl/mustache.js
