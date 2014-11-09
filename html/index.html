@@ -22,8 +22,9 @@
 		<p>MealPlannr is a smart planner that learns what you like, and helps you plan a week of meals.</p>
 		<div class='step'>
 		<h3>How It Works</h3>
-		<p><strong>Step 1</strong> - Our smart meal planner show you a combination of old and new meals</p>
-		<p><strong>Step 2</strong> - You pick meals you want to eat this week, and we create the perfect meal plan.</p>
+		<p><strong>Step 1</strong> - Our smart meal planner creates a personalized combination of new recipes and old favorites</p>
+		<br>
+		<p><strong>Step 2</strong> - Pick meals you want to eat this week, and we'll create the perfect meal plan.</p>
 		</div>
 
 		<center><button data-action="start">Get Started!</button></center>
@@ -35,7 +36,7 @@
 		</div>
 	</div>
 	<div class='footer'>
-
+		This service is in beta, and we'd love to hear your feedback! <a href="mailto://crockerresearch2014@gmail.com">crockerresearch2014@gmail.com</a>
 	</div>
 
 
@@ -60,15 +61,17 @@
 	<script id="tmpl-plan" type="x-tmpl-mustache">
 		<div class='plan'>
 			<h1>Your MealPlan is finished!</h1>
-			<p>Congratulations! You&#39ve picked <strong>2</strong> new recipies to try this week!</p>
+			<p>Congratulations! You&#39ve picked <strong>2</strong> new recipes to try this week!</p>
 			<div class='meals'>
 			{{#meals}}
 				<div class='card' data-type="{{type}}">
 					<div class='image'>
 						<img src='{{image}}' />
 					</div>
-					<div class='title'>{{title}}</div>
-					<div class='details'>{{time}}, {{calories}} calories</div>
+					<div>
+						<div class='title'>{{title}}</div>
+						<div class='details'>{{time}}, {{calories}} calories</div>
+					</div>
 				</div>
 			{{/meals}}
 			</div>

@@ -12,15 +12,15 @@ var state = {
 }
 
 var recipies = [
-	{id: 1, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'common', title: 'Meatloaf', calories : 150, time: '30min'},
-	{id: 2, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'common', title: 'Tacos', calories : 350, time: '10min'},
-	{id: 3, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'common', title: 'Speghetti', calories : 250, time: '20min'},
-	{id: 4, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Tacos de Lingua', calories : 150, time: '20min'},
-	{id: 5, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Chicken Alfredo', calories : 300, time: '40min'},
-	{id: 6, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Fried Rice with Pork Tenderlion', calories : 150, time: '30min'},
-	{id: 7, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'common', title: 'Raised Meatballs and Rice', calories : 245, time: '20min'},
-	{id: 8, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Tortilla Soup', calories : 400, time: '1hr'},
-	{id: 9, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'common', title: 'Waffles & Eggs', calories : 310, time: '30min'},
+	{id: 1, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'common', title: 'Meatloaf', calories : 150, time: '30min'},
+	{id: 2, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'common', title: 'Tacos', calories : 350, time: '10min'},
+	{id: 3, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'common', title: 'Speghetti', calories : 250, time: '20min'},
+	{id: 4, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'diverse', title: 'Tacos de Lingua', calories : 150, time: '20min'},
+	{id: 5, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'diverse', title: 'Chicken Alfredo', calories : 300, time: '40min'},
+	{id: 6, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'diverse', title: 'Fried Rice with Pork Tenderlion', calories : 150, time: '30min'},
+	{id: 7, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'common', title: 'Raised Meatballs and Rice', calories : 245, time: '20min'},
+	{id: 8, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'diverse', title: 'Tortilla Soup', calories : 400, time: '1hr'},
+	{id: 9, image : 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Macaroni_and_cheese_%282%29_%28cropped%29.jpg/800px-Macaroni_and_cheese_%282%29_%28cropped%29.jpg', type : 'common', title: 'Waffles & Eggs', calories : 310, time: '30min'},
 	{id: 10, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Chicken and Waffles', calories : 100, time: '10min'},
 	{id: 11, image : 'http://lh5.ggpht.com/east-MMyMjVPuc3nlC4trgJBg7O4nbTJvD6ZmkqYSy2YgN5QwYrc_ZqdvP2iB7MEmAEGWsCZPLnDAlq7eixg=s730-e365', type : 'diverse', title: 'Misu Soup', calories : 250, time: '300min'}];
 
@@ -56,7 +56,7 @@ var getCommonCount = function(recipies){
 
 var chooseNextRecipie = function(){
 
-	var unusedRecipies = getUnusedRecipies(state.liked, recipies);
+	var unusedRecipies = getUnusedRecipies(state.liked.concat(state.discard), recipies);
 
 	var commonCount = getCommonCount(state.liked);
 	var diverseCount = state.liked.length - commonCount;
@@ -75,6 +75,7 @@ var chooseNextRecipie = function(){
 	})
 
 	if(unusedRecipies.length == 0){
+		debugger;
 		throw new Error('Out of recipies');
 	}
 
