@@ -57,12 +57,21 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		// docco: {
+		//   debug: {
+		//     src: ['js/**/*.js', 'style/**/*.scss'],
+		//     options: {
+		//       output: 'docs/'
+		//     }
+		//   }
+		// }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	//grunt.loadNpmTasks('grunt-docco');
 
 	// Default task(s).
 	grunt.registerTask('default', ['clean:all', 'sass', 'uglify', 'watch']);

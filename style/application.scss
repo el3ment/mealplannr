@@ -12,12 +12,19 @@ html, body{
 }
 
 body{
-	background-color: #fff;
-	//padding-bottom: 50px;
+	
+	width: 100%;
+}
+
+.page{
 	max-width: 450px;
 	width: 100%;
+	background-color: #fff;
 	margin: auto;
+	padding-bottom: 30px;
+	overflow: hidden;
 }
+
 
 button{ 
 	border: 0;
@@ -43,12 +50,12 @@ h3{
 	color: grey;
 	margin-top: 100px;
 	padding: 20px;
-	float: left;
+	//float: left;
 	clear: both;
 }
 
 .tip{
-	background-color: #eeeeee;
+	background-color: #fffcb2;
 	padding: 5px 10px;
 	border-radius: 5px;
 	float: left;
@@ -172,7 +179,7 @@ h3{
 	}
 
 	.meals{
-		margin-top: 50px;
+
 	}
 
 	.card{
@@ -184,11 +191,7 @@ h3{
 
 		.image{
 			
-			width: 75px;
-			height: 75px;
-			float: left;
 			overflow: hidden;
-			margin-right: 20px;
 
 			img{
 				width: 100%;
@@ -227,5 +230,11 @@ h3{
 			background-color: #18ce36;
 			float: right;
 		}
+	}
+
+	.try-again{
+		margin-left: 0px;
+		padding: 20px 0 20px 0px;
+		float: left;
 	}
 }
