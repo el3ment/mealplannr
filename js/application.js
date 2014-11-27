@@ -2,14 +2,22 @@
 
 var templates = {
 	card : $('#tmpl-card').html(),
-	plan : $('#tmpl-plan').html()
+	plan : $('#tmpl-plan').html(),
+	recipe : $('#tmpl-recipe').html(),
+	list : $('#tmpl-shoppinglist-page').html(),
+	firstPage : $('#tmpl-tutorial-firstPage').html(),
+	tutorial_two : $('#tmpl-tutorial-secondPage').html(),
+	tutorial_three : $('#tmpl-tutorial-thirdPage').html(),
 } 
 
 var state = {
 	currentMeal : null,
 	liked : [],
-	discard : []
+	discard : [],
+	totalMeals : 7
 }
+
+var _nextTutorialPage = 1;
 
 var recipies = [
 	{id:'3398', type:'common', title:'Omelettes',image:'../images/800px-Bacon_omelette_%281126041315%29.jpg',calories:'230',time:'15 min'},
@@ -86,12 +94,11 @@ var getCommonCount = function(recipies){
 var chooseNextRecipie = function(){
 
 	var unusedRecipies = getUnusedRecipies(state.liked.concat(state.discard), recipies);
-
 	var commonCount = getCommonCount(state.liked);
 	var diverseCount = state.liked.length - commonCount;
 
 	if(commonCount < 5 && diverseCount < 2)
-		probabilityOfCommon = .5;
+		probabilityOfCommon = 0.5;
 	else if(commonCount < 5 && diverseCount == 2)
 		probabilityOfCommon = 1;
 	else if(commonCount >= 5)
@@ -119,11 +126,13 @@ var processNext = function(){
 
 		try{
 			state.currentMeal = chooseNextRecipie();
+			state.currentMeal.totalLikedPlusOne = state.liked.length + 1;
+			state.currentMeal.totalLiked = state.liked.length;
+			state.currentMeal.totalMeals = state.totalMeals;
 
-			var recipie = attachEvents(render(templates.card, state.currentMeal));
+			var recipie = attachEvents(render(templates.recipe, state.currentMeal));
 
-			$('#cards .option').hide();
-			$('#cards').append(recipie);
+			renderPage(recipie);
 
 		}catch(e){
 			alert(e);
@@ -137,34 +146,52 @@ var processNext = function(){
 
 var handleNo = function(e, r){
 	state.discard.push(state.currentMeal);
+	$('.recipe').addClass('showFailure');
 	processNext();
 }
 
 var handleYes = function(e, r){
 	state.liked.push(state.currentMeal);
-	processNext();
+	
+	$('.recipe').addClass('showSuccess');
+	
+	setTimeout(function(){
+		processNext();
+	}, 750);
 }
 
 var attachEvents = function(code){
 	code = $(code);
 
-	$('button[data-action="yes"]', code).on('click', handleYes);
-	$('button[data-action="no"]', code).on('click', handleNo);
+	$('button[data-action="yes"]', code).one('click', handleYes);
+	$('button[data-action="no"]', code).one('click', handleNo);
 
 	return code;
 }
 
 var displayShoppingList = function(){
-	alert('This feature isn\'t avaliable yet.');
+	var html = render(templates.list, {meals : state.liked});
+	renderPage(html);
 }
 
-var displayMealPlan = function(){
+var displayMealPlan = function(e){
 	var plan = render(templates.plan, {
+								totalMeals : state.liked.length,
 								meals : state.liked, 
 								commonCount : getCommonCount(state.liked), 
 								diverseCount : state.liked.length - getCommonCount(state.liked)});
-	$('#app').html(plan);
+
+	renderPage(plan, $((e || {}).target).hasClass('back') ? 'left' : 'right');
 	$('button[data-action="shopping-list"]').on('click', displayShoppingList);
+	$('button[data-action="createNew"]').on('click', createNew);
+}
+
+var createNew = function(){
+	state.liked = [];
+	state.discard = [];
+	state.currentMeal = null;
+
+	processNext();
 }
 
 var preloadImages = function(){
@@ -178,9 +205,70 @@ var preloadImages = function(){
 	});
 }
 
+var renderNextTutorialScreen = function(){
+	var tutorial;
+
+	switch(_nextTutorialPage){
+		case 1:
+			tutorial = null;
+			break;
+		case 2:
+			tutorial = render(templates.tutorial_two, {});
+			_nextTutorialPage++;
+			break;
+		case 3:
+			tutorial = render(templates.tutorial_three, {});
+			_nextTutorialPage++;
+			break;
+		default:
+			tutorial = null;
+			break;
+	}
+
+	tutorial = $(tutorial);
+	$('.subpage.onscreen').append(tutorial);
+	$('button[data-action="continue"]', tutorial).one('click', function(){
+		$(tutorial).remove();
+	})
+};
+
+var renderPage = function(html, direction){
+	if(!direction)
+		direction = 'right';
+
+	var otherDirection = direction == 'left' ? 'right' : 'left';
+
+	html = $(html).wrap('<div class="subpage"></div>').parent().addClass('offscreen').addClass('offscreen-' + direction);
+	$('.window').append(html);
+
+	$('*[data-action="displayMenuPlan"]', html).on('click', displayMealPlan);
+		
+	setTimeout(function(){
+		var prev = $('.window .subpage.onscreen').addClass('offscreen-' + otherDirection).removeClass('offscreen-' + direction + ' onscreen');
+		html.addClass('onscreen');
+		renderNextTutorialScreen();
+		setTimeout(function(){
+			prev.remove();
+		}, 1000);
+	}, 1);
+
+	
+	
+};
+
+$('button[data-action="displayMenuPlan"]').on('click', displayMealPlan);
+
 $('button[data-action="start"]').on('click', function(){
-	$('#welcome').remove();
-	processNext();
+	$('.welcome').remove();
+
+	var firstPage = $(render(templates.firstPage, {}));
+	$('button[data-action="continue"]', firstPage).one('click', function(){
+		_nextTutorialPage = 2;
+		createNew();
+	});
+	
+	renderPage(firstPage);
+	
 });
 
 $().ready(preloadImages);
