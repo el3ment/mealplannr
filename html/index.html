@@ -12,7 +12,28 @@
 
 <div class="navigation">
     <div class='title'>Settings</div>
-
+	<p>Let us know a little bit about you!</p>
+	<form>
+		<div class='group'>
+			<p>
+				<input type="checkbox" id="vegetarian" name="vegetarian"/>
+				<label for="vegetarian">Vegetarian</label>
+			</p>
+			<p>
+				<input type="checkbox" id="glutenfree" name="glutenfree"/>
+				<label for="glutenfree">Gluten-Free</label>
+			</p>
+			<p>
+				<input type="checkbox" id="nodairy" name="nodairy" />
+				<label for="nodairy">Dairy-Free</label>
+			</p>
+		</div>
+		<div class='betanotice'>
+		<strong>Need to contact us?</strong>
+		<p>Our app is still in beta, and we'd love to hear from you!</p>
+		<div class='action'><a href='mailto:contact@mymealplannr.com'>Send An Email</a></div>
+		</div>
+    </form>
 </div>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -144,11 +165,13 @@
 
 	<script id="tmpl-tutorial-firstPage" type="x-tmpl-mustache">
 		<div class='modal behindHeader'>
+			<div class='bg'></div>
 			<div class='tutorial tutorial-one'>
 				<div class='step'>
 					<h4><span class='numberIcon'>1</span>Step 1. Customize your plan</h4>
-					<p>Click the settings icon in the top right and let us know if you're vegan, gluten-free and how many people are in your family.</p>
+					<p>Click the settings icon in the top right and let us know if you're vegan, gluten-free and how many people you are planning for.</p>
 					<p>You can change these settings at any time!</p>
+					<img src='../images/arrow-upper-right.png' class='upper-right' />
 				</div>
 				<div class='action'><button class='b2' data-action="continue">Got it!</button></div>
 			</div>
@@ -157,10 +180,13 @@
 
 	<script id="tmpl-tutorial-secondPage" type="x-tmpl-mustache">
 		<div class='modal'>
+			<div class='bg'></div>
 			<div class='tutorial tutorial-two'>
 				<div class='step'>
 					<h4><span class='numberIcon'>2</span>Step 2. Pick your meals</h4>
 					<p>Say "Yes" to the meals you want to eat this week or no to meals you don't.</p>
+					<img src='../images/arrow-lower-right.png' class='lower-right' />
+					<img src='../images/arrow-lower-left.png' class='lower-left' />
 				</div>
 				<div class='action'><button class='b2' data-action="continue">Got it!</button></div>
 			</div>
@@ -169,6 +195,7 @@
 
 	<script id="tmpl-tutorial-thirdPage" type="x-tmpl-mustache">
 		<div class='modal'>
+			<div class='bg'></div>
 			<div class='tutorial tutorial-three'>
 				<div class='step'>
 					<h4><span class='numberIcon'>3</span>Step 3. Let us do the hard work.</h4>

@@ -14,7 +14,12 @@ var state = {
 	currentMeal : null,
 	liked : [],
 	discard : [],
-	totalMeals : 7
+	totalMeals : 7,
+
+	// Settings
+	vegetarian : false,
+	glutenfree : false,
+	nodairy : false
 }
 
 var _nextTutorialPage = 1;
@@ -272,5 +277,9 @@ $('button[data-action="start"]').on('click', function(){
 });
 
 $().ready(preloadImages);
+
+$('.navigation input[type="checkbox"]').on('change', function(e){
+	state[$(e.target).attr('name')] = $(e.target).prop('checked');
+});
 
 }());
