@@ -23,6 +23,25 @@ body{
 .welcome{
 	padding: 16px;
 	padding-top: 72px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #54c54e;
+	background: linear-gradient(45deg, #5bc74e 0%, #7fd44d 100%);
+	z-index: 5;
+	color: white;
+	text-align: center;
+
+	.action{
+		margin-top: 18px;
+
+	}
+
+	.big-logo{
+		max-width: 100%;
+	}
 }
 
 .dialog{
@@ -164,9 +183,18 @@ body{
     bottom: 0;
     z-index: 0;
     padding: 13px 18px;
+    overflow: scroll;
 
     .title{
   		font-size: 18px;
+  	}
+
+  	button.b2.save{
+  		margin-right: 16px;
+  		margin-top:-8px;
+  	}
+  	.action{
+  		text-align: right;
   	}
 }
 
@@ -247,7 +275,7 @@ body{
 button{
 	padding: 12px;
 	text-transform: uppercase;
-	background-color: #cc4e72;
+	background-color: #ec4445;
 	border-radius: 3px;
 	border: 0px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
@@ -302,7 +330,7 @@ form{
 	/* form starting stylings ------------------------------- */
 	.group        { 
 	  position:relative; 
-	  margin-bottom:40px;
+	  margin-bottom:24px;
 	  margin-top: 8px;
 	}
 	input{
@@ -475,14 +503,23 @@ form{
 		height: 100%;
 		background-color: rgba(255,255,255, .80);
 		position: absolute;
-		padding-top: 96px;
+		padding-top: 80px;
 		text-align: center;
 		opacity: 0;
 		display: block;
 
+		.showProgress{
+			top: 50%;
+			position: absolute;
+			margin-top: -84px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
 		svg{
-			width: 192px;
-			height: 192px;
+			width: 100px;
+			height: 100px;
 			min-height: 0;
 			min-width: 0;
 			margin: auto;
@@ -492,7 +529,17 @@ form{
 			fill: #54c54e;
 		}
 
-		font-size: 24px;
+		font-size: 22px;
+
+		// .text{
+		// 	display: inline-block;
+		// 	background-color: rgba(255,255,255,0.5);
+		// 	position: relative;
+		// 	top: -127px;
+		// 	border-radius: 3px;
+		// 	padding: 8px 16px;
+		// 	font-size: 22px;
+		// }
 	}
 	
 	&.showSuccess .success,
@@ -510,8 +557,8 @@ form{
 		min-height:100%;
 		margin-bottom: -30%;
 		margin-top: 64px - 16;
-		width: 200%;
-		margin-left: -50%;
+		width: 150%;
+		margin-left: -25%;
 	}
 	.titleCard{
 		position: absolute;
@@ -566,14 +613,17 @@ form{
 			width: 30%;
 			opacity: 1;
 			transition: opacity .2s;
+
 		}
 
 		button[data-action="yes"]{
 			float: right;
 			background-color: #ec4445;
+			border-radius: 3px 0 0 3px;
 		}
 		button[data-action="no"]{
 			background-color: #a3a3a3;
+			border-radius: 0 3px 3px 0 ;
 		}
 	}
 
@@ -670,6 +720,13 @@ p{
 		margin-bottom: 8px;
 	}
 }
+
+.logo{
+	position:absolute;
+	top: 20px;
+	left: 18px;
+}
+
 .recipelist{
 	.recipelistEntry{
 		
@@ -679,6 +736,8 @@ p{
 		padding: 16px;
 		min-height: 48 + 32px;
 		margin: 0;
+		float: left;
+		width: 100%;
 
 		&:hover, &:active{
 			text-decoration: none;
@@ -751,7 +810,7 @@ p{
 	background-color: transparent;
 	box-shadow: none;
 	text-transform: none;
-	font-size: 11px;
+	font-size: 14px;
 	padding: 8px;
 	&:hover, &:active{
 		background-color: rgba(255,255,255,.2);
@@ -759,18 +818,20 @@ p{
 	}
 }
 
+
+
 .headerTitle{
 	background-color: #54c54e;
 	background: linear-gradient(45deg, #5bc74e 0%, #7fd44d 100%);
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-	height: 192px;
+	height: 150px;
 	position: relative;
 	color: white;
-
+	z-index: 2;
 	.back{
 		margin-top: 64px;
 		margin-left: 8px;
-		color: rgba(255,255,255,.75);
+		color: #ffffff;
 	}
 
 	.title{

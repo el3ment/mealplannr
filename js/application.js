@@ -264,7 +264,6 @@ var renderPage = function(html, direction){
 $('button[data-action="displayMenuPlan"]').on('click', displayMealPlan);
 
 $('button[data-action="start"]').on('click', function(){
-	$('.welcome').remove();
 
 	var firstPage = $(render(templates.firstPage, {}));
 	$('button[data-action="continue"]', firstPage).one('click', function(){
@@ -276,7 +275,13 @@ $('button[data-action="start"]').on('click', function(){
 	
 });
 
-$().ready(preloadImages);
+//$().ready(preloadImages);
+
+$('.saveState').on('click', function(e){
+	$('#nav-trigger').prop('checked', false);
+	//console.log('yep');
+	e.preventDefault();
+})
 
 $('.navigation input[type="checkbox"]').on('change', function(e){
 	state[$(e.target).attr('name')] = $(e.target).prop('checked');
