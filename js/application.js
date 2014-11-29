@@ -293,6 +293,8 @@ var downloadRecipes = function(){
 					var rows = data.table.rows;
 					var cols = data.table.cols;
 
+					debugger;
+
 					for (var j = 0; j < rows.length; j++){
 						var row = {};
 						for(var i = 0; i < cols.length; i++){
@@ -300,7 +302,7 @@ var downloadRecipes = function(){
 							var value = (rows[j].c[i] || {}).v;
 							if(label.indexOf('[]') > -1){
 								label = label.replace('[]', '');
-								value = value.split('|');
+								value = (value || '').split('|');
 							}
 
 							row[label] = value;
