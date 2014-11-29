@@ -207,7 +207,7 @@ var chooseNextRecipie = function(){
 		throw new Error('Out of recipies');
 	}	
 	return unusedRecipies[Math.floor(Math.random() * unusedRecipies.length)];
-
+    */
 
 
 	var unusedRecipies = getUnusedRecipies(state.liked.concat(state.discard), recipies);
@@ -217,22 +217,25 @@ var chooseNextRecipie = function(){
 	var numDiverse = 2; //for now, this could be a state variable dynamically updated
 	var numCommon = numMeals - numDiverse;
 
+	//down-select to user preference
 	if(state.vegetarian)
 		unusedRecipies = $(unusedRecipies).filter(function(i,e){
-			return e.type == 
+			return e.vegetarian == 1;
+		})
+	if(state.dairyfree)
+		unusedRecipies = $(unusedRecipies).filter(function(i,e){
+			return e.dairyfree == 1;
+		})
+	if(state.glutenfree)
+		unusedRecipies = $(unusedRecipies).filter(function(i,e){
+			return e.glutenfree == 1;
 		})
 
-	*/
-
-	if(commonCount < 5 && diverseCount < 2)
-		probabilityOfCommon = 0.5;
-	else if(commonCount < 5 && diverseCount == 2)
-		probabilityOfCommon = 1;
-	else if(commonCount >= 5)
-		probabilityOfCommon = 0;
-
+	//choose a new recipe based upon diverse/common weighting
+	desCommon = numCommon - commonCount
+	desDiverse = numDiverse - diverseCount
+	probabilityOfCommon = desCommon/(desCommon+desDiverse)
 	var filterToType = probabilityOfCommon > Math.random() ? 'common' : 'diverse';
-
 	unusedRecipies = $(unusedRecipies).filter(function(i, e){
 		return e.type == filterToType;
 	})
