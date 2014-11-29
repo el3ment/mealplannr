@@ -261,6 +261,50 @@ var renderPage = function(html, direction){
 	
 };
 
+
+var downloadRecipes = function(){
+
+	window.google = {
+		visualization : {
+			Query : {
+				setResponse : function(data){
+					
+					var rows = data.table.rows;
+					var cols = data.table.cols;
+					var recipes = [];
+					for (var j = 0; j < rows.length; j++){
+						var row = {};
+						for(var i = 0; i < cols.length; i++){
+							var label = cols[i].label;
+							var value = rows[j].c[i].v;
+							if(label.indexOf('[]') > -1){
+								label = label.replace('[]', '');
+								value = value.split('|');
+							}
+
+							row[label] = value;
+						}
+						recipes.push(row);
+					}
+
+					console.log(recipes);
+				}
+			}
+		}
+	}
+
+	$.ajax({
+	    url: "https://docs.google.com/spreadsheets/d/17Tn6z_to33ai4qy5S6w7EDgKloy3yotXfHsYVDNfx-o/gviz/tq?tqx=out:jsonp&tq=select+*",
+	 
+	    // the name of the callback parameter, as specified by the YQL service
+	    jsonp: "google.visualization.Query.setResponse",
+	 
+	    // tell jQuery we're expecting JSONP
+	    dataType: "jsonp"
+	});
+
+};
+
 $('button[data-action="displayMenuPlan"]').on('click', displayMealPlan);
 
 $('button[data-action="start"]').on('click', function(){
@@ -274,6 +318,8 @@ $('button[data-action="start"]').on('click', function(){
 	renderPage(firstPage);
 	
 });
+
+downloadRecipes();
 
 //$().ready(preloadImages);
 

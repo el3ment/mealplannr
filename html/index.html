@@ -13,8 +13,8 @@
 
 <div class="navigation">
     <div class='title'>Settings</div>
-	<p>Let us know a little bit about you!</p>
 	<form action="#">
+		<strong>Dietary restrictions</strong>
 		<div class='group'>
 			<p>
 				<input type="checkbox" id="vegetarian" name="vegetarian"/>
@@ -30,6 +30,20 @@
 			</p>
 			<div class='action'><button class='b2 save new saveState'>Save</button></div>
 		</div>
+		<!--
+		<strong>Balancing the meal plan</strong>
+		<div class='group'>
+			<p>
+				<select id="totalMeals"><option>1</option></select>
+				<label for="totalMeals">Total meals in each plan</label>
+			</p>
+			<p>
+				<select id="numberOfDiverse"><option>1</option></select>
+				<label for="numberOfDiverse">New recipies in each plan</label>
+			</p>
+			
+		</div>
+		-->
 		<div class='betanotice'>
 		<strong>Need to contact us?</strong>
 		<p>Our app is still in beta, and we'd love to hear from you!</p>
@@ -212,23 +226,6 @@
 				<div class='action'><button class='b2' data-action="continue">Got it!</button></div>
 			</div>
 		</div>
-	</script>
-
-	
-	<script id="tmpl-configure" type="x-tmpl-mustache">
-		Configure 
-	</script>
-
-	<script id="tmpl-tutorial-configure" type="x-tmpl-mustache">
-		Heres how to configure
-	</script>
-
-	<script id="tmpl-tutorial-recipe" type="x-tmpl-mustache">
-		Heres how to swipe left or right
-	</script>
-
-	<script id="tmpl-tutorial-configure" type="x-tmpl-mustache">
-		Heres how to configure
 	</script>
 
 	<script id="tmpl-shoppinglist-page" type="x-tmpl-mustache">
