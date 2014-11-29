@@ -26,6 +26,7 @@ var _nextTutorialPage = 1;
 
 //need to add boolean fields vegetarian{0,1}, glutenfree{0.1}, and dairyfree{} 
 
+<<<<<<< HEAD
 var recipies = [
 {id:'3398',type:'common',title:'Omelettes',image:'../images/800px-Bacon_omelette_%281126041315%29.jpg',calories:'230',vegetarian:"1",dairyfree:"0",glutenfree:"1",time:'15 min'},
 {id:'8423',type:'common',title:'Pulled Pork Sandwiches',image:'../images/800px-BBQ_Pulled_Pork.jpg',calories:'310',vegetarian:"0",dairyfree:"1",glutenfree:"0",time:'2 hours'},
@@ -66,6 +67,9 @@ var recipies = [
 {id:'7987',type:'common',title:'Taco Salad',image:'../images/6870397289_8542df73cc_z.jpg',calories:'250',vegetarian:"0",dairyfree:"0",glutenfree:"1",time:'30 min'},
 {id:'8808',type:'common',title:'Chicken Pot Pie',image:'../images/6848890395_73ff3098f5_b.jpg',calories:'275',vegetarian:"0",dairyfree:"1",glutenfree:"1",time:'2 hours 15 min'}
 ];
+=======
+var recipies = [];
+>>>>>>> cbbc356da7898735b176982925f0bfab99fe96d9
 
 var getUnusedRecipies = function(usedRecipies, allRecipies){
 	var unusedRecipies = [];
@@ -321,6 +325,48 @@ var renderPage = function(html, direction){
 	
 };
 
+
+var downloadRecipes = function(){
+
+	window.google = {
+		visualization : {
+			Query : {
+				setResponse : function(data){
+					
+					var rows = data.table.rows;
+					var cols = data.table.cols;
+
+					for (var j = 0; j < rows.length; j++){
+						var row = {};
+						for(var i = 0; i < cols.length; i++){
+							var label = cols[i].label;
+							var value = (rows[j].c[i] || {}).v;
+							if(label.indexOf('[]') > -1){
+								label = label.replace('[]', '');
+								value = value.split('|');
+							}
+
+							row[label] = value;
+						}
+						recipies.push(row);
+					}
+				}
+			}
+		}
+	}
+
+	$.ajax({
+	    url: "https://docs.google.com/spreadsheets/d/17Tn6z_to33ai4qy5S6w7EDgKloy3yotXfHsYVDNfx-o/gviz/tq?tqx=out:jsonp&tq=select+*",
+	 
+	    // the name of the callback parameter, as specified by the YQL service
+	    jsonp: "google.visualization.Query.setResponse",
+	 
+	    // tell jQuery we're expecting JSONP
+	    dataType: "jsonp"
+	});
+
+};
+
 $('button[data-action="displayMenuPlan"]').on('click', displayMealPlan);
 
 $('button[data-action="start"]').on('click', function(){
@@ -334,6 +380,8 @@ $('button[data-action="start"]').on('click', function(){
 	renderPage(firstPage);
 	
 });
+
+downloadRecipes();
 
 //$().ready(preloadImages);
 
