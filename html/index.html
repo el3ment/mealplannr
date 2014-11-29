@@ -139,9 +139,9 @@
 			<div class='titleCard content'>
 				<span class='title'>{{title}}</span>
 				<span class='chicklet-group'>
-					<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span> Gluten-Free</span>
-					<span class='chicklet'><span class='letterIcon' data-type="paleo">p</span> Paleo</span>
-					<span class='chicklet'><span class='letterIcon' data-type="vegetarian">v</span> Vegan</span>
+					{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span> Gluten-Free</span>{{/glutenfree}}
+								{{#vegetarian}}<span class='chicklet'><span class='letterIcon' data-type="vegetarian">v</span> Vegetarian</span>{{/vegetarian}}
+								{{#dairyfree}}<span class='chicklet'><span class='letterIcon' data-type="dairy-free">d</span> Dairy-free</span>{{/dairyfree}}
 				</span>
 				<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
 				<div class='actions'>
@@ -164,14 +164,16 @@
 
 			<div class='recipelist'>
 				{{#meals}}
-					<a href="#" class='recipelistEntry row'>
+					<a href="{{recipeUrl}}" class='recipelistEntry row'>
 						<span class='col-xs-2 fixedImage'>
 							<span class='imageContainer'><img src='{{image}}'></span>
 						</span>
 						<span class='col-xs-9'>
 							<span class='title'>{{title}}</span>
 							<span class='chicklet-group'>
-								<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span></span>	
+								{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span></span>{{/glutenfree}}
+								{{#vegetarian}}<span class='chicklet'><span class='letterIcon' data-type="vegetarian">v</span></span>{{/vegetarian}}
+								{{#dairyfree}}<span class='chicklet'><span class='letterIcon' data-type="dairy-free">d</span></span>{{/dairyfree}}
 							</span>
 							<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
 						</span>
