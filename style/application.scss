@@ -709,6 +709,9 @@ p{
 	&[data-type="gluten-free"]{
 		background-color: #f1c191;
 	}
+	&[data-type="dairy-free"]{
+		background-color: #1f4cbe;
+	}
 }
 .symbolIcon{
 	font-size: 20px;
@@ -718,9 +721,18 @@ p{
 }
 
 .shoppingList{
-	padding: 16px;
 	.shoppingListEntry{
-		margin-bottom: 8px;
+
+		padding: 16px;
+		border-bottom: 1px solid #ccc;
+
+		h4{
+			font-size: 16px;
+		}
+			
+		.ingredient{
+			//padding-left: 16px;
+		}
 	}
 }
 
@@ -780,7 +792,7 @@ p{
 			padding-left: 0;
 		}
 
-		&:after{
+		&[href*="."]:after{
 			content: '\203A';
 			font-size: 36px;
 			line-height: 0;

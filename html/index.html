@@ -25,8 +25,8 @@
 				<label for="glutenfree">Gluten-Free</label>
 			</p>
 			<p>
-				<input type="checkbox" id="nodairy" name="nodairy" />
-				<label for="nodairy">Dairy-Free</label>
+				<input type="checkbox" id="dairyfree" name="dairyfree" />
+				<label for="dairyfree">Dairy-Free</label>
 			</p>
 			<div class='action'><button class='b2 save new saveState'>Save</button></div>
 		</div>
@@ -139,11 +139,13 @@
 			<div class='titleCard content'>
 				<span class='title'>{{title}}</span>
 				<span class='chicklet-group'>
-					{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span> Gluten-Free</span>{{/glutenfree}}
+					<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
+				</span>
+				<span class='chicklet-group'>
 								{{#vegetarian}}<span class='chicklet'><span class='letterIcon' data-type="vegetarian">v</span> Vegetarian</span>{{/vegetarian}}
+								{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span> Gluten-Free</span>{{/glutenfree}}
 								{{#dairyfree}}<span class='chicklet'><span class='letterIcon' data-type="dairy-free">d</span> Dairy-free</span>{{/dairyfree}}
 				</span>
-				<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
 				<div class='actions'>
 					<button data-action="yes"> &hearts; Yes!</button>
 					<button data-action="no">No</button>
@@ -164,18 +166,20 @@
 
 			<div class='recipelist'>
 				{{#meals}}
-					<a href="{{recipeUrl}}" class='recipelistEntry row'>
+					<a href="{{recipeUrl}}" target="_new" class='recipelistEntry row'>
 						<span class='col-xs-2 fixedImage'>
 							<span class='imageContainer'><img src='{{image}}'></span>
 						</span>
 						<span class='col-xs-9'>
 							<span class='title'>{{title}}</span>
 							<span class='chicklet-group'>
-								{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span></span>{{/glutenfree}}
+								<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
+							</span>
+							<span class='chicklet-group'>
 								{{#vegetarian}}<span class='chicklet'><span class='letterIcon' data-type="vegetarian">v</span></span>{{/vegetarian}}
+								{{#glutenfree}}<span class='chicklet'><span class='letterIcon' data-type="gluten-free">g</span></span>{{/glutenfree}}
 								{{#dairyfree}}<span class='chicklet'><span class='letterIcon' data-type="dairy-free">d</span></span>{{/dairyfree}}
 							</span>
-							<span class='chicklet'><span class='symbolIcon' data-type="time">&#9719;</span> {{time}}</span>
 						</span>
 					</a>
 				{{/meals}}
@@ -238,42 +242,14 @@
 			</div>
 
 			<div class='shoppingList'>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
-				<div class='shoppingListEntry'>3cups raw sugar</div>
+				{{#meals}}
+					<div class='shoppingListEntry'>
+						<h4>{{title}}</h4>
+						{{#ingredients}}
+							<div class='ingredient'>{{.}}</div>
+						{{/ingredients}}
+					</div>
+				{{/meals}}
 			</div>
 			<!-- <div class='footer'>
 				<button class='b2'>Back to Plan</button>
